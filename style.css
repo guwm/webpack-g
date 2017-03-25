@@ -1,0 +1,14 @@
+/*
+* @Author: guwenmei
+* @Date:   2017-03-25 16:32:03
+* @Last Modified by:   guwenmei
+* @Last Modified time: 2017-03-25 16:48:00
+*/
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: lightgreen;
+}
