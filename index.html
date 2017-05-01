@@ -2,11 +2,21 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>webpack test</title>
+        <title><%= htmlWebpackPlugin.options.title%></title>
+        <script type="text/javascript" src="<%= htmlWebpackPlugin.files.chunks.a.entry %>"></script>
     </head>
     <body>
-    <script type="text/javascript" src="bundle.js">
-        
-    </script>
+        <!--<% for (var key in htmlWebpackPlugin) { %>
+            <%= key %>
+        <% } %>-->
+        <!--<% for (var key in htmlWebpackPlugin.files) { %>
+            <%= key %> : <%= JSON.stringify(htmlWebpackPlugin.files[key])%>
+        <% } %>
+        <% for (var key in htmlWebpackPlugin.options) { %>
+            <%= key %> : <%= JSON.stringify(htmlWebpackPlugin.options[key])%>
+        <% } %>-->
+
+    <script type="text/javascript" src="bundle.js"></script>
+    <script type="text/javascript" src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
     </body>
 </html>

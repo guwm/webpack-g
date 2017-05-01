@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/guwm/webpack-g/issues"
   },
-  "homepage": "https://github.com/guwm/webpack-g#readme"
+  "homepage": "https://github.com/guwm/webpack-g#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^2.28.0"
+  }
 }
