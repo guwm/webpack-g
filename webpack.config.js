@@ -20,7 +20,9 @@ module.exports = {
     // entry: ['./src/script/main.js','./src/script/a.js'], //将平行的main.js,a.js打包成了一个文件
     entry : {
         main: './src/script/main.js',
-        a: './src/script/a.js'
+        a: './src/script/a.js',
+        b: './src/script/b.js',
+        c: './src/script/c.js'
     },
 
     //当多个输入，可以使用占位符使文件名唯一[name]=entry的key,[hash]=本次打包时候的hash,[chunkhash]=当文件变化时hash值会发生变化（比如上线时候只需要上线改动的文件）
@@ -43,6 +45,29 @@ module.exports = {
                 removeComments: true, //打包时候删除注释
                 collapseWhitespace: true //删除空格
             }
+        }),
+        new htmlWebpackPlugin({ //可以通过不同的页面制定不同的模版，也可以给相同的页面指定不同的模版，我们举例生成多页面的HTML
+            filename: 'a.html',
+            template: 'index.html',
+            // inject: 'body',
+            inject: false,
+            title: 'webpack is a.html!',
+            // chunks: ['main', 'a']
+            excludeChunks: ['b','c']//表示除了b和c的chunks
+        }),
+        new htmlWebpackPlugin({
+            filename: 'b.html',
+            template: 'index.html',
+            inject: false,
+            title: 'webpack is b.html!',
+            excludeChunks: ['a','c']
+        }),
+         new htmlWebpackPlugin({ 
+            filename: 'c.html',
+            template: 'index.html',
+            inject: false,
+            title: 'webpack is c.html!',
+           excludeChunks: ['a','b']
         })
     ]
 }

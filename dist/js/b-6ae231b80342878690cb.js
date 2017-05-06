@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "http://cdn.com";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 1);
@@ -71,16 +71,7 @@
 /* 1 */
 /***/ (function(module, exports) {
 
-/*
-* @Author: guwenmei
-* @Date:   2017-03-26 10:19:02
-* @Last Modified by:   guwenmei
-* @Last Modified time: 2017-03-26 10:19:27
-*/
 
-function helloworld() {
-    
-}
 
 /***/ })
 /******/ ]);

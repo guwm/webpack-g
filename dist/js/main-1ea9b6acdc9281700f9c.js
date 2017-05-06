@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>webpack is great!</title><script type="text/javascript">/******/ (function(modules) { // webpackBootstrap
+/******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -84,4 +84,4 @@ function helloworld() {
 
 /***/ })
 
-/******/ });</script></head><body><script type="text/javascript" src="http://cdn.com/js/main-1ea9b6acdc9281700f9c.js"></script></body></html>
+/******/ });

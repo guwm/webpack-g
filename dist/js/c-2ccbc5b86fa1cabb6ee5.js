@@ -1,4 +1,3 @@
-var HTML_WEBPACK_PLUGIN_RESULT =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -61,17 +60,19 @@ var HTML_WEBPACK_PLUGIN_RESULT =
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "http://cdn.com";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 2:
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: SyntaxError: Unexpected identifier\n    at Function (native)\n    at /Users/may/workspace/mySpace/webpack-self/node_modules/lodash/lodash.js:14843:16\n    at apply (/Users/may/workspace/mySpace/webpack-self/node_modules/lodash/lodash.js:494:27)\n    at /Users/may/workspace/mySpace/webpack-self/node_modules/lodash/lodash.js:15227:16\n    at apply (/Users/may/workspace/mySpace/webpack-self/node_modules/lodash/lodash.js:496:27)\n    at /Users/may/workspace/mySpace/webpack-self/node_modules/lodash/lodash.js:6600:16\n    at Function.template (/Users/may/workspace/mySpace/webpack-self/node_modules/lodash/lodash.js:14842:20)\n    at Object.module.exports (/Users/may/workspace/mySpace/webpack-self/node_modules/html-webpack-plugin/lib/loader.js:32:20)");
+
 
 /***/ })
-/******/ ]);
+
+/******/ });
