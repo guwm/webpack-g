@@ -20,6 +20,7 @@ module.exports = {
     // entry:  __dirname + '/src/script/main.js', //打包开始的入口文件
     //__dirname 属于node原生的，获取项目现在的路径，加上拼接的得到绝对路径
     // entry: ['./src/script/main.js','./src/script/a.js'], //将平行的main.js,a.js打包成了一个文件
+    // context: __dirname,
     entry : {
         main: './src/app.js',
     },
@@ -39,10 +40,24 @@ module.exports = {
                 query: {
                     presets: ['latest'] //或者在配置config.js文件指定，或者建.babelrc文件
                 }
-            }
+            },
+            {
+                test: /\.css$/,
+                // loader: "style-loader!css-loader!postcss-loader", //这个写法是从后往前处理，或者试用一下数组写法,
+                loaders:["style-loader","css-loader"],
+            },
+            {
+                test: /\.less$/,
+                // loader: "style-loader!css-loader!postcss-loader", //这个写法是从后往前处理，或者试用一下数组写法,
+                loaders:["style-loader","css-loader","less-loader"],
+            },
         ]
     },
-
+    // postcss: [ //webpack2不支持自定义属性写法？？未解决
+    //     require('autoprefixer')({
+    //         broswers: ['last 5 version']//对浏览器进行指定,给浏览器加前缀
+    //     }) //commonJS 语法
+    // ],
     plugins: [
         new htmlWebpackPlugin({ 
             filename: 'index.html',

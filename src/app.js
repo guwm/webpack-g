@@ -1,7 +1,6 @@
+import './css/common.css'
 import layer from './components/layer/layer.js'
-const App = function() {
-    const NUM = 1;
-    alert(NUM);
+const App = function() { 
     console.log(layer);
 } 
 
