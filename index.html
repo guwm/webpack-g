@@ -3,21 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title><%= htmlWebpackPlugin.options.title %></title>
-        <!--我们希望一部分直接嵌入在页面里面,而不是使用script，使用script会增加http请求，为了提高性能，不使用chunks,使用complication是webpack暴露给我们的一个引用-->
-        <!--将公用的main插入到模版中 inline方式插入-->
-        <script type="text/javascript">
-        <%= 
-        compilation.assets[htmlWebpackPlugin.files.chunks.main.entry.substr(htmlWebpackPlugin.files.publicPath.length)].source()
-        %>
-        </script>
     </head>
     <body>
-        <!-- 手动引用对应的文件，以外链的方式引入 -->
-        <% for (var k in htmlWebpackPlugin.files.chunks ){ %>
-            <% if(k == 'main'){ %>
-                <script type="text/javascript" src="<%= htmlWebpackPlugin.files.chunks[k].entry%>"></script>
-            <% }%>
-        <% }%>
-    <!--<script type="text/javascript" src="bundle.js"></script>-->
     </body>
 </html>

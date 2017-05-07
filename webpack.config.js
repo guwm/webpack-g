@@ -12,62 +12,42 @@
  * 多页面应用会将entry定义成对象，key-value的形式
  */
 
-var htmlWebpackPlugin = require('html-webpack-plugin')
+var htmlWebpackPlugin = require('html-webpack-plugin');
+var path = require("path");
 
 module.exports = {
     // context: 一般是指项目脚本运行的上下文，一般我们在根目录下运行
     // entry:  __dirname + '/src/script/main.js', //打包开始的入口文件
+    //__dirname 属于node原生的，获取项目现在的路径，加上拼接的得到绝对路径
     // entry: ['./src/script/main.js','./src/script/a.js'], //将平行的main.js,a.js打包成了一个文件
     entry : {
-        main: './src/script/main.js',
-        a: './src/script/a.js',
-        b: './src/script/b.js',
-        c: './src/script/c.js'
+        main: './src/app.js',
     },
-
-    //当多个输入，可以使用占位符使文件名唯一[name]=entry的key,[hash]=本次打包时候的hash,[chunkhash]=当文件变化时hash值会发生变化（比如上线时候只需要上线改动的文件）
     output : {
         path:  __dirname + '/dist',
-        filename: 'js/[name]-[chunkhash].js',
-        publicPath: 'http://cdn.com'//需要上线时候的占位符.所有的JS会添加这个绝对位置
+        filename: 'js/[name]-bundle.js'
+    },
+    module: {
+        loaders : [
+            {
+                test: /\.js$/, //以JS结尾的文件
+                loader: 'babel-loader',
+                // exclude: /node_modules/,
+                exclude: path.resolve(__dirname, 'node_modules'),//解析成绝对路径
+                // include: /src/,
+                include:  path.resolve(__dirname, 'src'),
+                query: {
+                    presets: ['latest'] //或者在配置config.js文件指定，或者建.babelrc文件
+                }
+            }
+        ]
     },
 
     plugins: [
-        new htmlWebpackPlugin({ //支持类似JS的模版语言
-            // filename: 'index-[hash].html',
+        new htmlWebpackPlugin({ 
             filename: 'index.html',
             template: 'index.html',
-            // inject: 'head',//制定将我们的脚本放在head还是body 的标签里面
-            inject: false,
-            title: 'webpack is great!',//练习在模版中取参数
-            //可以在https://www.npmjs.com/package/html-webpack-plugin查看对应配置项
-            minify: {
-                removeComments: true, //打包时候删除注释
-                collapseWhitespace: true //删除空格
-            }
-        }),
-        new htmlWebpackPlugin({ //可以通过不同的页面制定不同的模版，也可以给相同的页面指定不同的模版，我们举例生成多页面的HTML
-            filename: 'a.html',
-            template: 'index.html',
-            // inject: 'body',
-            inject: false,
-            title: 'webpack is a.html!',
-            // chunks: ['main', 'a']
-            excludeChunks: ['b','c']//表示除了b和c的chunks
-        }),
-        new htmlWebpackPlugin({
-            filename: 'b.html',
-            template: 'index.html',
-            inject: false,
-            title: 'webpack is b.html!',
-            excludeChunks: ['a','c']
-        }),
-         new htmlWebpackPlugin({ 
-            filename: 'c.html',
-            template: 'index.html',
-            inject: false,
-            title: 'webpack is c.html!',
-           excludeChunks: ['a','b']
+            inject: 'body'//制定将我们的脚本放在head还是body 的标签里面
         })
     ]
 }
